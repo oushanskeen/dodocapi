@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const MongoClient = require("mongodb").MongoClient;
 const bodyParser = require("body-parser");
+/*
 const Owner = require("../service/storage/models/owner.model");
 
 //  db connection ---------------------------------------------------
@@ -66,8 +67,10 @@ async function deleteOwner() {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.post("/", (req, res) => {
-  console.log(req.body);
-  res.send(req.body);
+ // console.log(req.body);
+ // res.send(req.body);
+  console.log("Hello world from dodoc-backend");
+  res.send("Hello world from dodoc-backend");
   res.end();
 });
 /*
@@ -150,12 +153,18 @@ MongoClient.connect("mongodb://localhost:27017", { useUnifiedTopology: true })
 //    objectsRouter(app);
 //    dogovorsRouter(app);
 //  secondRouter(app);
+app.get('/', (req,res) => {
+    console.log("change on :", Date.now());
+    res.send(`${Date.now()}`);
+})
+/*
       app.get('/owners', async (req, res) => {
         console.log('get request body: ', req.body);
         const response = await Owner.find({})
           .select({"_id":0, "__v":0});
         res.send(response);
       })
+*/
 //    app.use('/hello', helloRouter);
 //    app.use('/owners', ownersRouter);
 //    app.use('/agents', agentsRouter);
