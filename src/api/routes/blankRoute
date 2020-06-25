@@ -1,0 +1,29 @@
+
+const routeControllerMethod = (
+  require('../../service/controllers/routeName')
+);
+
+module.exports.get = (app) => {
+  app.get(
+    '/routeName', 
+    routeNameController.getRouteName
+  )
+}
+module.exports.get = (app) => {
+  app.post(
+    '/routeName', 
+    routeNameController.postRouteName
+  )
+}
+module.exports.get = (app) => {
+  app.put(
+    '/routeName', 
+    routeNameController.putRouteName
+  )
+}
+module.exports.get = (app) => {
+  app.delete(
+    '/routeName', 
+    routeNameController.deleteRouteName
+  )
+}

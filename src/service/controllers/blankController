@@ -1,0 +1,41 @@
+const getRoutename = 
+  require('../../core/interactors/getRoutename');
+const postRoutename = 
+  require('../../core/interactors/postRoutename');
+const putRoutename = 
+  require('../../core/interactors/putRoutename');
+const deleteRoutename = 
+  require('../../core/interactors/deleteRoutename');
+
+const routenameRepositoryMongoose = 
+  require('../storage/repositories/routename/inMongoose');
+const makeRoutenameRepository = 
+  require('../../core/repositories/routename');
+const routenameRepository = 
+  makeRoutenameRepository(routenameRepositoryMongoose);
+
+const getRoutenameHandler = async (req, res) => {
+  const routenameId = req.body.id || 0;
+  const routenameGetData = await getRoutename
+    (routenameId, routenameRepository);
+  res.json(
+    routenameGetData
+    || {message: "Hello from getRoutenameHandler"}
+  )
+} 
+const postRoutenameHandler = async (req, res) => {
+  res.json({message: "Hello from postRoutenameHandler"})
+} 
+const putRoutenameHandler = async (req, res) => {
+  res.json({message: "Hello from putRoutenameHandler"})
+} 
+const deleteRoutenameHandler = async (req, res) => {
+  res.json({message: "Hello from deleteRoutenameHandler"})
+} 
+
+module.exports = {
+  getRoutenameHandler,
+  postRoutenameHandler,
+  putRoutenameHandler,
+  deleteRoutenameHandler,
+}

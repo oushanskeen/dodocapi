@@ -1,0 +1,9 @@
+module.exports = (_repository) => {
+  return {
+    create: entity => _repository.create(entity),
+    readOne: id => _repository.readOne(id),
+    readAll: () => _repository.readAll(),
+    update: (entity) => _repository.update(entity),
+    delet: (id) => _repository.delet(id)
+  }
+}

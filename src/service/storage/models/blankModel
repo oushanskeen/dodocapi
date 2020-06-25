@@ -1,0 +1,20 @@
+const mongoose = require('mongoose');
+const Schema - mongoose.Schema;
+const routenameSchema = new Schema({
+  id:{
+    type: Int
+  }
+  //name: {
+  //  type: String,
+  //  required: true,
+  //  unique: true,
+  //  trim: true,
+  //},
+  //data:{
+  //  type: [],
+  //  required: true
+  //},
+  //timestamps: true
+});
+const Routename = mongoose.model('Routename', routenameSchema);
+module.exports = Routename;
