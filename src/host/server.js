@@ -8,7 +8,6 @@
 //  db connection ---------------------------------------------------
     let mongoose = require('mongoose');
     const url = 'mongodb://localhost:27017/dodoctest';
-    //const url = 'mongodb+srv://oushanskeen:EbAnUtSa3000RaZ@library-database-1irwr.mongodb.net/dodoc?retryWrites=true&w=majority';
     mongoose.connect(
       url,
       { useNewUrlParser: true, useUnifiedTopology: true }
