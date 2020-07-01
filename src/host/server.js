@@ -2,8 +2,10 @@
 //  major express import --------------------------------------------
     const express = require("express");
     const app = express();
+    app.use(express.json());
     const MongoClient = require("mongodb").MongoClient;
-//  const bodyParser = require("body-parser");
+    const ownersRouter = require('../api/routes/owners');
+    let bodyParser = require('body-parser');
 
 //  db connection ---------------------------------------------------
     let mongoose = require('mongoose');
@@ -28,17 +30,21 @@
     let cors = require('cors')
     app.use(cors())
 
-    let bodyParser = require('body-parser');
-    app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(bodyParser.json());
+    // //app.use(bodyParser.urlencoded({ extended: true }));
+    // //app.use(bodyParser.json());
+    //app.use(bodyParser.raw());
 
 //  routing ---------------------------------------------------------
     // routers imports-----------------------------------------------
-    let ownersRouter = require('../api/routes/owners');
+    //const ownersRouter = require('../api/routes/owners');
     // register the routes ------------------------------------------
     ownersRouter(app);
     // use routes ---------------------------------------------------
     app.use('/owners',ownersRouter);
+    app.use('/testjson', (req,res) => {
+      console.log("testjsxon req.body:", req.body);
+      res.json(req.body);
+    })
    
 //  export ----------------------------------------------------------
     module.exports = app;

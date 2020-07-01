@@ -1,4 +1,3 @@
-
 const ownersController = (
   require('../../service/controllers/owners')
 );
@@ -6,12 +5,6 @@ const ownersController = (
 module.exports = (app) => {
   app.get('/owners', ownersController.getOwnersHandler);
   app.post('/owners', ownersController.postOwnersHandler);
-  //app.put(
-  //  '/owners', 
-  //  ownersController.putOwnersHandler
-  //)
-  //app.delete(
-  //  '/owners', 
-  //  ownersController.deleteOwnersHandler
-  //)
+  app.put('/owners', ownersController.putOwnersHandler);
+  app.delete('/owners', ownersController.deleteOwnersHandler);
 }
