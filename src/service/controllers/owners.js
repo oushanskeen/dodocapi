@@ -29,6 +29,7 @@ const getOwnersHandler = async (req, res) => {
     };
   const getOwnersData = 
     await getOwners(ownersId, ownersRepository, 'owner');
+  console.log(`GETOWNERSDATA: ${getOwnersData}`);
   try {
     res.status(200).json(
       getOwnersData[req.route.path]
