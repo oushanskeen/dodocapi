@@ -1,0 +1,16 @@
+const routename = require('../../core/entities/routename');
+
+const create = async (_routenameEntity) => "routnameStub";
+const readOne = async (_routenameId) => "routnameStub";
+const readAll = () => "routnameStub"; 
+const update = _routenameEntity => "routnameStub";
+const delete = _routenameId => "routnameStub";
+
+module.exports = {
+  create,
+  readOne,
+  readAll,
+  update,
+  delete
+};
+

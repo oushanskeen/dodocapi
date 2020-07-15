@@ -5,26 +5,30 @@
 
 //  models -----------------------------------------------------------
     const Owners = require('../../models/owners');
-    const models = {
-     '/owners': Owners,
-    };
+    const Agents = require('../../models/agents');
 
 //  functions --------------------------------------------------------
-    const create = async (_ownersEntity) => {
-      let response = await
-      Owners.create(_ownersEntity);
-      return response 
+    const create = async (_dicEntity) => {
+      let response = async(model) => ({
+        '/owners': await Owners.create(_dicEntity),
+        '/agents': await Agents.create(_dicEntity),
+      });
+      return response(model)
         || {stubName : "ownersMongooseCreateStub"};
     };
     const readOne = async (_ownersId) => {
       const modelName = _ownersId.route;
       console.log("modelName in inMongoose: ", modelName);
-      console.log("MODEL in inMongoose: ", models[modelName]);
+      //console.log("MODEL in inMongoose: ", models[modelName]);
 
       //let response = await models.modelName.find({},{_id:0,__v:0});
-      let response = async(model) => ({
-        '/owners': await Owners.find({},{_id:0,__v:0})
-      });
+      let response = async(model) => {
+        return {
+        '/owners':  /*async() =>  */await Owners.find({},{_id:0,__v:0}),
+        '/agents': /*async() =>*/ await Agents.find({},{_id:0,__v:0})
+        }
+      };
+      console.log("response(modelName): ", response(modelName));
       return response(modelName)
         || { stubName : "ownersMongooseReadOneStub"};
     };

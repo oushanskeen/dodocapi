@@ -1,37 +1,26 @@
-const getOwners = 
-  require('../../core/interactors/getOwners');
-const postOwners = 
-  require('../../core/interactors/postOwners');
-const putOwners = 
-  require('../../core/interactors/putOwners');
-const deleteOwners = 
-  require('../../core/interactors/deleteOwners');
+const getDic = 
+  require('../../core/interactors/getDic');
+const postDic = 
+  require('../../core/interactors/postDic');
+const putDic = 
+  require('../../core/interactors/putDic');
+const deleteDic = 
+  require('../../core/interactors/deleteDic');
 
-const ownersRepositoryMongoose = 
-  require('../storage/repositories/owners/inMongoose');
-const makeOwnersRepository = 
-  require('../../core/repositories/owners');
-const ownersRepository = 
-  makeOwnersRepository(ownersRepositoryMongoose);
+const dicRepositoryMongoose = 
+  require('../storage/repositories/dics/inMongoose');
+const makeDicRepository = 
+  require('../../core/repositories/dic');
+const dicRepository = 
+  makeDicRepository(dicRepositoryMongoose);
 
-const getOwnersHandler = async (req, res) => {
-  console.log("getOwnersHandler request: ", req);
-  console.log("getOwnersHandler request: ", req.route.path);
-  const ownersId = 
-    {
-      id: req.body.id,
-      route: req.route.path
-    }
-    || 
-    {
-      id: 668,
-      route: req.route.path
-    };
-  const getOwnersData = 
-    await getOwners(ownersId, ownersRepository, 'owner');
+const getDicHandler = async (req, res) => {
+  const ownersId = req.body.id || 668;
+  const getDicData = 
+    await getDic(dicId, dic;Repository);
   try {
     res.status(200).json(
-      getOwnersData[req.route.path]
+      getOwnersData
   //    || {stubName: "getOwnersHandlerStub"}
     )
   } catch (err) {
@@ -81,7 +70,7 @@ const deleteOwnersHandler = async (req, res) => {
     ownersId, ownersRepository); 
   try {
     res.status(200).json(
-      {message: ownersId}
+      {message: `owner with Id ${ownersId} is away.`}
       || {message: "seem have to show your the delete stub"}
     )
   } catch (err) {

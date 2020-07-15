@@ -5,6 +5,9 @@
     app.use(express.json());
     const MongoClient = require("mongodb").MongoClient;
     const ownersRouter = require('../api/routes/owners');
+    const agentsRouter = require('../api/routes/agents');
+    const objectsRouter = require('../api/routes/objects');
+    const dogovorsRouter = require('../api/routes/dogovors');
     let bodyParser = require('body-parser');
 
 //  db connection ---------------------------------------------------
@@ -39,8 +42,14 @@
     //const ownersRouter = require('../api/routes/owners');
     // register the routes ------------------------------------------
     ownersRouter(app);
+    agentsRouter(app);
+    objectsRouter(app);
+    dogovorsRouter(app);
     // use routes ---------------------------------------------------
-    app.use('/owners',ownersRouter);
+    app.use('/owners', ownersRouter);
+    app.use('/agents', agentsRouter);
+    app.use('/objects', objectsRouter);
+    app.use('/dogovors', dogovorsRouter);
     app.use('/testjson', (req,res) => {
       console.log("testjsxon req.body:", req.body);
       res.json(req.body);

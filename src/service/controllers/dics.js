@@ -1,7 +1,11 @@
 const getOwners = 
   require('../../core/interactors/getOwners');
+const getDics = 
+  require('../../core/interactors/getDics');
 const postOwners = 
   require('../../core/interactors/postOwners');
+const postDics = 
+  require('../../core/interactors/postDics');
 const putOwners = 
   require('../../core/interactors/putOwners');
 const deleteOwners = 
@@ -9,15 +13,21 @@ const deleteOwners =
 
 const ownersRepositoryMongoose = 
   require('../storage/repositories/owners/inMongoose');
+const dicRepositoryMongoose = 
+  require('../storage/repositories/dics/inMongoose');
 const makeOwnersRepository = 
   require('../../core/repositories/owners');
+const makeDicRepository = 
+  require('../../core/repositories/dics');
 const ownersRepository = 
   makeOwnersRepository(ownersRepositoryMongoose);
+const dicRepository = 
+  makeDicRepository(dicRepositoryMongoose);
 
-const getOwnersHandler = async (req, res) => {
+const getDicHandler = async (req, res) => {
   console.log("getOwnersHandler request: ", req);
   console.log("getOwnersHandler request: ", req.route.path);
-  const ownersId = 
+  const dicId = 
     {
       id: req.body.id,
       route: req.route.path
@@ -27,34 +37,36 @@ const getOwnersHandler = async (req, res) => {
       id: 668,
       route: req.route.path
     };
-  const getOwnersData = 
-    await getOwners(ownersId, ownersRepository, 'owner');
+  //const getOwnersData = 
+  //  await getOwners(ownersId, ownersRepository, 'owner');
+  const getDicData = 
+    await getDics(dicId, dicRepository);
   try {
     res.status(200).json(
-      getOwnersData[req.route.path]
+      getDicData[req.route.path][0]
   //    || {stubName: "getOwnersHandlerStub"}
     )
   } catch (err) {
     res.status(500).send(err);
   }
 } 
-const postOwnersHandler = async (req, res) => {
+const postDicHandler = async (req, res) => {
   console.log("request body in post verb from: ", req.body);
-  const ownersEntity = 
+  const dicEntity = 
     req.body 
   //  || {stubName:"ownerEntityFromPostOwnerHandlerStub"};
-  const postOwnersData = 
-    await postOwners(ownersEntity, ownersRepository)
+  const postDicData = 
+    await postDics(dicEntity, dicRepository)
   try {
     res.status(200).json(
-      postOwnersData 
+      postDicData 
   //    || {stubName: "postOwnersDataFromOwnerHandlerStub"}
     )
   } catch (err) {
     res.status(500).send(err)
   }
 } 
-const putOwnersHandler = async (req, res) => {
+const putDicHandler = async (req, res) => {
   console.log("putOwnersHandler req.body", req.body);
   const newVersionValue = Date.now();
   const ownersEntity = {
@@ -71,7 +83,7 @@ const putOwnersHandler = async (req, res) => {
     res.status(500).send(err)
   }
 } 
-const deleteOwnersHandler = async (req, res) => {
+const deleteDicHandler = async (req, res) => {
   //console.log("req.body.id: ", req.body.id);
   console.log("req.body in deleteOwnersHandler: ", req.body);
  // console.log("req: ", req);
@@ -81,7 +93,7 @@ const deleteOwnersHandler = async (req, res) => {
     ownersId, ownersRepository); 
   try {
     res.status(200).json(
-      {message: ownersId}
+      {message: `owner with Id ${ownersId} is away.`}
       || {message: "seem have to show your the delete stub"}
     )
   } catch (err) {
@@ -90,8 +102,8 @@ const deleteOwnersHandler = async (req, res) => {
 } 
 
 module.exports = {
-  getOwnersHandler,
-  postOwnersHandler,
-  putOwnersHandler,
-  deleteOwnersHandler,
+  getDicHandler,
+  postDicHandler,
+  putDicHandler,
+  deleteDicHandler,
 }
