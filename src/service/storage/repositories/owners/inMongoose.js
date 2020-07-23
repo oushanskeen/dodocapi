@@ -11,6 +11,9 @@
 
 //  functions --------------------------------------------------------
     const create = async (_ownersEntity) => {
+      console.log("ON OWNER CREATE IN MONGOOSE"+
+        JSON.stringify(_ownersEntity)
+      );
       let response = await
       Owners.create(_ownersEntity);
       return response 

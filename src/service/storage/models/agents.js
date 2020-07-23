@@ -11,12 +11,12 @@ const ownersSchema = new Schema({
  },
   compFullName:{
     type: String,
-    required: true,
+    //required: true,
     trim: true,
   },
   compShortName:{
     type: String,
-    required: true,
+    //required: true,
     trim: true,
   },
   ///FIO:{
@@ -26,72 +26,72 @@ const ownersSchema = new Schema({
   //},
   INN:{
     type: String,
-    required: true,
+    //required: true,
     trim: true,
   },
   KPP:{
     type: String,
-    required: true,
+    //required: true,
     trim: true,
   },
   OGRN:{
     type: String,
-    required: true,
+    //required: true,
     trim: true,
   },
   OKPO:{
     type: String,
-    required: true,
+    //required: true,
     trim: true,
   },
   GosRegDate:{
     type: String,
-    required: true,
+    //required: true,
     trim: true
   },
   YurAdress:{
     type: String,
-    required: true,
+    //required: true,
     trim: true
   },
   FactAdress:{
     type: String,
-    required: true,
+    //required: true,
     trim: true,
   },
   GenDirector:{
     type: String,
-    required: true,
+    //required: true,
     trim: true
   },
   Buhgalter:{
     type: String,
-    required: true,
+    //required: true,
     trim: true,
   },
   tel:{
     type: String,
-    required: true,
+    //required: true,
     trim: true
   },
   bankName:{
     type: String,
-    required: true,
+    //required: true,
     trim: true
   },
   BIK:{
     type: String,
-    required: true,
+    //required: true,
     trim: true
   },
   RS:{
     type: String,
-    required: true,
+    //required: true,
     trim: true
   },
   KS:{
     type: String,
-    required: true,
+    //required: true,
     trim: true
   },
   //signature:{
