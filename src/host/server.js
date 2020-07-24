@@ -12,6 +12,18 @@
     const dogovorsRouter = require('../api/routes/dogovors');
     const sendPdf = require('../utils/nodemailerSample');
     let bodyParser = require('body-parser');
+    const path = require('path');
+
+    //express.static(path.join(__dirname, 'public'))
+    //app.use(express.static('public'));
+    app
+      .use( express.static(path.join(__dirname,'./public')))
+      .get("*", (req,res) => {
+        res.sendFile((__dirname+"/public/sampleText.txt"));
+    });
+    //console.log("REAAAAD: ", read())
+    
+
     //app.use(cors());
     const nodemailer = require('nodemailer');
     app.use((req,res,next)=>{
