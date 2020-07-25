@@ -67,7 +67,7 @@
       });
 
   app.use('/public',express.static(__dirname + '/public'));
-  app.use(express.static(__dirname + '/public'));
+  app.use(express.static(__dirname + '/public', {dotfiles:"allow"}));
 
 //  routing ---------------------------------------------------------
     // routers imports-----------------------------------------------
