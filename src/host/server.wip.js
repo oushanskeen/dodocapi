@@ -4,9 +4,7 @@
     //const cors = require('cors');
     const app = express();
     const fs = require('fs');
-    const http = require('http');
-    const https = require('https');
-//app.use(express.json({limit:50000}));
+    //app.use(express.json({limit:50000}));
     const MongoClient = require("mongodb").MongoClient;
     const ownersRouter = require('../api/routes/owners');
     const agentsRouter = require('../api/routes/agents');
@@ -15,19 +13,6 @@
     const sendPdf = require('../utils/nodemailerSample');
     let bodyParser = require('body-parser');
     const path = require('path');
-
-    // Certificate
-    const privateKey = fs.readFileSync('/etc/letsencrypt/live/dodoc.site/privkey.pem', 'utf8');
-    const certificate = fs.readFileSync('/etc/letsencrypt/live/dodoc.site/cert.pem', 'utf8');
-    const ca = fs.readFileSync('/etc/letsencrypt/live/dodoc.site/chain.pem', 'utf8');
-
-    const credentials = {
-      key: privateKey,
-      cert: certificate,
-      ca: ca,
-    };
-    const httpsServer = https.createServer(credentials, app);
-    //app.use((req,res) => res.send("Hello there!"));
 
     //express.static(path.join(__dirname, 'public'))
     //app.use(express.static('public'));
@@ -121,10 +106,6 @@
       sendPdf(dogovorPdf);
       res.end();
     })
- const httpServer = http.createServer(app); 
-
+   
 //  export ----------------------------------------------------------
-    module.exports.app = app;
-    module.exports.httpServer = httpServer;
-    module.exports.httpsServer = httpsServer;
-    
+    module.exports = app;
