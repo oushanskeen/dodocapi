@@ -6,7 +6,7 @@ const fs = require('fs');
 const http = require('http');
 const https = require('https');
 
-ap.use(cors());
+app.use(cors());
 
 // Certificate
 //const privateKey = fs.readFileSync('/etc/letsencrypt/live/dodoc.site/privkey.pem', 'utf8');
