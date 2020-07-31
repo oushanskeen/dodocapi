@@ -1,9 +1,12 @@
 const app = require('./server').app;
+const core = require('cors');
 const httpServer = require('./server').httpServer;
 const httpsServer = require('./server').httpsServer;
 const fs = require('fs');
-//const http = require('http');
-////const https = require('https');
+const http = require('http');
+const https = require('https');
+
+ap.use(cors());
 
 // Certificate
 //const privateKey = fs.readFileSync('/etc/letsencrypt/live/dodoc.site/privkey.pem', 'utf8');

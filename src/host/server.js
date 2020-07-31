@@ -33,9 +33,9 @@
     //app.use(express.static('public'));
     app
       .use( express.static(path.join(__dirname,'./public')))
-      .get("*", (req,res) => {
-        res.sendFile((__dirname+"/public/sampleText.txt"));
-    });
+      //.get("*", (req,res) => {
+      //  res.sendFile((__dirname+"/public/sampleText.txt"));
+    //});
     //console.log("REAAAAD: ", read())
     
 
@@ -66,8 +66,8 @@
     */
 
 //  cors & parse ---------------------------------------------------
-    let cors = require('cors')
-    app.use(cors())
+    //let cors = require('cors')
+    //app.use(cors())
 
     app.use(bodyParser.urlencoded({limit:"20mb",extended: true }));
     app.use(bodyParser.json({limit:"20mb",extended: true }));
