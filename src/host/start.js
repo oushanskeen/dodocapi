@@ -1,5 +1,5 @@
 const app = require('./server').app;
-const core = require('cors');
+const cors = require('cors');
 const httpServer = require('./server').httpServer;
 const httpsServer = require('./server').httpsServer;
 const fs = require('fs');
